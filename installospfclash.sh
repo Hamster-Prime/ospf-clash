@@ -402,12 +402,12 @@ rules:
   - MATCH,PROXY
 EOF
 
+cd /root/nchnroutes && make
+
 echo "重启 clash"
 
 systemctl restart clash
 
 echo "重启 bird"
-
-cd /root/nchnroutes && make
 
 echo "请执行 crontab -e 在末尾添加 0 5 * * * cd /root/nchnroutes && make"
