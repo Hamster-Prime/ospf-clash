@@ -7,6 +7,8 @@ echo "开始下载 mohomo"
 # 检测系统架构
 architecture=$(uname -m)
 
+echo "当前架构为: $architecture"
+
 # 定义文件下载链接
 if [ "$architecture" == "x86_64" ]; then
     file_url="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-compatible-alpha-002b8af.gz"
