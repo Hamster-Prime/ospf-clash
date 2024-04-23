@@ -65,6 +65,14 @@ echo "开始复制 clash 到 /usr/local/bin"
 cp clash /usr/local/bin
 echo "复制完成"
 
+echo "开始安装docker"
+apt install docker.io -y
+echo "docker安装完成"
+
+echo "开始安装ui界面"
+docker run -d --restart always -p 80:80 --name metacubexd mrxianyu/metacubexd-ui
+echo "ui界面安装完成"
+
 echo "开始设置 转发"
 echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf
@@ -393,12 +401,6 @@ proxy-groups:
 rules:
   - MATCH,PROXY
 EOF
-
-echo "下载metacubexd-ui"
-
-wget https://github.com/MetaCubeX/metacubexd/releases/download/v1.138.1/compressed-dist.tgz
-
-gunzip compressed-dist.tgz -d /etc/clash/ui/metacubexd/
 
 echo "重启 clash"
 
