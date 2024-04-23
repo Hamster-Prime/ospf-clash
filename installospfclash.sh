@@ -433,8 +433,6 @@ else
     cd /root/nchnroutes && make
 fi
 
-echo "重启 bird"
-
 echo "请执行 crontab -e 在末尾添加 0 5 * * * cd /root/nchnroutes && make"
 
-echo "等待重启后请访问 http://$ip_address:9090/ui 进入管理面板后填入 http://$ip_address:9090"
+echo "请访问 http://$ip_address:9090/ui 进入管理面板后填入 http://$ip_address:9090"
