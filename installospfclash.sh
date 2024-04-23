@@ -100,7 +100,7 @@ echo "开始创建 bird 配置文件"
 
 mv /etc/bird/bird.conf bird.conf.orig
 
-echo "请输入路由ID"
+echo "请输入路由ID(无特殊要求请输入本机内网IP)"
 
 read routerid
 
