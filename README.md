@@ -57,6 +57,7 @@ nano ~/.zshrc
 source ~/.zshrc
 #配置生效
 ```
+### 安装Clash与OSPF服务
 
 `wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh`
 
