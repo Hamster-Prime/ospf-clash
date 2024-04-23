@@ -14,4 +14,4 @@
 
 `/routing ospf area add instance=Clash name=OSPF-Area-Clash`
 
-`/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s interfaces="你的网桥名字或者网卡名字" type=ptp`
+`/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s cost=10 priority=1 interfaces="你的网桥名字或者网卡名字" type=ptp`
