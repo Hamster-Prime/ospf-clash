@@ -26,11 +26,6 @@ lxc.cap.drop:
 lxc.cgroup2.devices.allow: c 10:200 rwm
 lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
-### 开启第三方登录
-```
-nano /etc/ssh/sshd_config
-service ssh restart
-```
 ### 设置东八区与中文
 ```
 timedatectl set-timezone Asia/Shanghai
