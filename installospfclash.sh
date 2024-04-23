@@ -304,6 +304,7 @@ mixed-port: 7890
 unified-delay: false
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
+external-ui: /etc/clash/ui/metacubexd
 
 geodata-mode: true
 geox-url:
