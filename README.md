@@ -8,6 +8,8 @@
 
 # RouterOS设置部分:
 
-#### OSPF设置
+#### OSPF设置(全局)
 
-/routing ospf instance add name=dc1 router-id=10.0.1.1
+`/routing ospf instance add name=Clash router-id="本设备IP"`
+`/routing ospf area add instance=Clash name=OSPF-Area-Clash`
+`/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s interfaces="你的网桥名字或者网卡名字" type=ptp`
