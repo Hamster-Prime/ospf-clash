@@ -53,7 +53,7 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospf
 /routing ospf area add instance=Clash name=OSPF-Area-Clash
 ```
 ```
-/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s cost=10 priority=1 interfaces="你的网桥名字或者网卡名字" type=ptp
+/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s cost=10 priority=1 interfaces="你的网桥名字或者网卡名字" type=broadcast networks="你的内网网段,比如10.0.0.0/24"
 ```
 ```
 /ip firewall mangle add action=accept chain=prerouting src-address="你的Clash服务器IP" protocol=!ospf
