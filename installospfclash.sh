@@ -2,7 +2,7 @@
 apt update
 apt install bird git make curl wget gzip sudo -y
 
-echo "开始下载 mohomo"
+echo "开始下载 mihomo"
 
 # 检测系统架构
 architecture=$(uname -m)
@@ -25,7 +25,7 @@ wget "$file_url" || {
     exit 1
 }
 
-echo "mohomo 下载完成"
+echo "mihomo 下载完成"
 
 # 解压文件
 
@@ -310,7 +310,7 @@ mixed-port: 7890
 unified-delay: false
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
-secret: '123456789'
+external-ui: /etc/clash/ui/metacubexd
 
 geodata-mode: true
 geox-url:
@@ -401,6 +401,12 @@ proxy-groups:
 rules:
   - MATCH,PROXY
 EOF
+
+echo "下载metacubexd-ui"
+
+wget https://github.com/MetaCubeX/metacubexd/releases/download/v1.138.1/compressed-dist.tgz
+
+gunzip compressed-dist.tgz -d /etc/clash/ui/metacubexd/
 
 echo "重启 clash"
 
