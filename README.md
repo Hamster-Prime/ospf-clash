@@ -4,4 +4,6 @@
 
 执行`wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh`
 
+### 根据脚本提示完成设置
+
 ## RouterOS设置部分:
