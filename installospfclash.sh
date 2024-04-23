@@ -2,6 +2,9 @@
 apt update
 apt install bird git make curl wget gzip sudo -y
 
+# 检测eth0的IP
+ip_address=$(ip addr show eth0 | grep -oP 'inet \K[\d.]+')
+
 echo "开始下载 mihomo"
 
 # 检测系统架构
@@ -46,7 +49,7 @@ echo "开始重命名"
 
 for file in mihomo*; do
     if [ -f "$file" ]; then
-        echo "重命名 $file 为 $new_name ..."
+        echo "重命名 $file 为 clash ..."
         mv "$file" clash
     fi
 done
@@ -65,22 +68,13 @@ echo "开始复制 clash 到 /usr/local/bin"
 cp clash /usr/local/bin
 echo "复制完成"
 
-echo "开始安装docker"
-apt install docker.io -y
-echo "docker安装完成"
-
-echo "开始安装ui界面"
-docker run -d --restart always -p 80:80 --name metacubexd mrxianyu/metacubexd-ui
-echo "ui界面安装完成"
-
 echo "开始设置 转发"
 echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf
 echo "转发设置完成"
 
 echo "开始创建 systemd 服务"
 
-sudo tee /etc/systemd/system/clash.service > /dev/null <<EOF
+tee /etc/systemd/system/clash.service > /dev/null <<EOF
 [Unit]
 Description=Clash daemon, A rule-based proxy in Go.
 After=network.target
@@ -100,7 +94,7 @@ echo "开始创建 bird 配置文件"
 
 mv /etc/bird/bird.conf bird.conf.orig
 
-echo "请输入路由ID(无特殊要求请输入本机内网IP)"
+echo "请输入路由ID(无特殊要求请输入本机内网IP $ip_address )"
 
 read routerid
 
@@ -401,14 +395,45 @@ rules:
   - MATCH,PROXY
 EOF
 
+echo "开始下载并设置metacubexd面板"
+
+# 下载文件
+wget https://github.com/MetaCubeX/metacubexd/releases/download/v1.138.1/compressed-dist.tgz
+
+# 创建目标文件夹
+sudo mkdir -p /etc/clash/ui/metacubexd
+
+# 解压缩到目标文件夹
+sudo tar -xzvf compressed-dist.tgz -C /etc/clash/ui/metacubexd
+
+# 清理下载的压缩文件
+rm compressed-dist.tgz
+
 echo "重启 clash"
 
 systemctl restart clash
 
-cd /root/nchnroutes && make
+# 最大循环次数
+max_attempts=60
+attempt=1
+
+# 检查Clash服务状态是否为active，最多尝试60次
+while [[ "$(systemctl is-active clash)" != "active" && $attempt -le $max_attempts ]]; do
+    echo "正在等待Clash服务启动"
+    sleep 1
+done
+
+# 如果循环次数达到上限仍未检测到Clash运行状态为active，则输出错误信息
+if [[ "$(systemctl is-active clash)" != "active" ]]; then
+    echo "Clash运行失败请检查配置文件是否正确"
+else
+    echo "Clash 已启动"
+    # 继续执行后续命令
+    cd /root/nchnroutes && make
+fi
 
 echo "重启 bird"
 
 echo "请执行 crontab -e 在末尾添加 0 5 * * * cd /root/nchnroutes && make"
 
-echo "访问本机 IP:80 进入管理面板后填入 http://本机IP:9090"
+echo "等待重启后请访问 http://$ip_address:80 进入管理面板后填入 http://$ip_address:9090"
