@@ -7,3 +7,7 @@
 #### 根据脚本提示完成设置
 
 # RouterOS设置部分:
+
+#### OSPF设置
+
+/routing ospf instance add name=dc1 router-id=10.0.1.1
