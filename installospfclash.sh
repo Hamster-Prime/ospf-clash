@@ -310,7 +310,6 @@ mixed-port: 7890
 unified-delay: false
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
-external-ui: /etc/clash/ui/metacubexd
 
 geodata-mode: true
 geox-url:
@@ -412,4 +411,4 @@ echo "重启 bird"
 
 echo "请执行 crontab -e 在末尾添加 0 5 * * * cd /root/nchnroutes && make"
 
-echo "访问本机 IP:80 进入管理面板后填入 http://本机IP:9090 密码为123456789"
+echo "访问本机 IP:80 进入管理面板后填入 http://本机IP:9090"
