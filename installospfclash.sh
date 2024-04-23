@@ -1,6 +1,6 @@
 #!/bin/bash
 apt update
-apt install bird make curl wget sudo -y
+apt install bird make curl wget gzip sudo -y
 
 echo "开始下载 mohomo"
 
