@@ -1,6 +1,6 @@
 # LXC容器部分
 
-# 创建lxc容器模板
+## 创建lxc容器模板
 ## 乌班图下载
 ```
 /var/lib/vz/template/cache
