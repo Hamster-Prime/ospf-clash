@@ -1,10 +1,7 @@
 # LXC容器部分
 
 ## 模板下载
-```
-/var/lib/vz/template/cache
-#上传文件夹
-```
+**https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
 ## 容器创建
 取消特权容器勾选
 其他配置根据自己实际情况设定
