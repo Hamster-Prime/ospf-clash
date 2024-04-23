@@ -21,7 +21,7 @@ lxc.cap.drop:
 lxc.cgroup2.devices.allow: c 10:200 rwm
 lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
-### 启动容器并进入控制台
+启动容器并进入控制台
 ### 安装Clash与OSPF服务
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
