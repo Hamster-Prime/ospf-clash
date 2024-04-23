@@ -402,11 +402,11 @@ rules:
   - MATCH,PROXY
 EOF
 
-cd /root/nchnroutes && make
-
 echo "重启 clash"
 
 systemctl restart clash
+
+cd /root/nchnroutes && make
 
 echo "重启 bird"
 
