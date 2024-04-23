@@ -14,9 +14,9 @@ echo "当前架构为: $architecture"
 
 # 定义文件下载链接
 if [ "$architecture" == "x86_64" ]; then
-    file_url="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-compatible-alpha-002b8af.gz"
+    file_url="https://github.com/MetaCubeX/mihomo/releases/download/v1.18.3/mihomo-linux-amd64-compatible-v1.18.3.gz"
 elif [ "$architecture" == "aarch64" ]; then
-    file_url="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-arm64-alpha-002b8af.gz"
+    file_url="https://github.com/MetaCubeX/mihomo/releases/download/v1.18.3/mihomo-linux-arm64-v1.18.3.gz"
 else
     echo "不支持您的系统架构 目前只支持x86_64与arm64 当前架构为: $architecture"
     exit 1
