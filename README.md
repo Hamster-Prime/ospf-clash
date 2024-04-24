@@ -60,4 +60,7 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospf
 ```
 /ip firewall mangle add action=mark-routing new-routing-mark=Clash_VPN dst-address-type=!local chain=prerouting src-address-list=!No_Proxy
 ```
-### 4. 把你不想代理的主机IP地址添加到 No_Proxy 列表里即可跳过代理
+### 4. 跳过代理
+```
+/ip firewall address-list add address="不想代理的主机IP地址" list=No_Proxy
+```
