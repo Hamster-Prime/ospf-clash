@@ -107,7 +107,7 @@ router id ${routerid};
 protocol kernel {
 	scan time 60;
 	import none;
-	export all;   # Actually insert routes into the kernel routing table
+#	export all;   # Actually insert routes into the kernel routing table
 }
 
 # The Device protocol is not a real routing protocol. It doesn't generate any
