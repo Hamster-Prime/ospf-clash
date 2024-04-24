@@ -47,10 +47,12 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospf
 
   
 # RouterOS设置部分
-### OSPF设置
+
+### 1. 创建 Routing Table
 ```
 /routing table add name=Clash_VPN fib
 ```
+### 2. OSPF 设置
 ```
 /routing ospf instance add name=Clash router-id="本设备IP" routing-table=Clash_VPN
 ```
@@ -60,10 +62,11 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospf
 ```
 /routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s cost=10 priority=1 interfaces="你的网桥名字或者网卡名字" type=broadcast networks="你的内网网段,比如10.0.0.0/24"
 ```
+### 3. Firewall Mangle 设置
 ```
 /ip firewall mangle add action=accept chain=prerouting src-address="你的Clash服务器IP" protocol=!ospf
 ```
 ```
 /ip firewall mangle add action=mark-routing new-routing-mark=Clash_VPN dst-address-type=!local chain=prerouting src-address-list=!No_Proxy
 ```
-### 把你不想代理的主机填入No_Proxy列表里即可
+## 把你不想代理的主机填入No_Proxy列表里即可
