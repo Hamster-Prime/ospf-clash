@@ -135,20 +135,6 @@ echo "bird 配置文件创建完成"
 
 git clone https://github.com/Hamster-Prime/nchnroutes.git
 
-mv /root/nchnroutes/Makefile Makefile.orig
-
-tee /root/nchnroutes/Makefile <<EOF
-produce:
-	git pull
-	curl -o delegated-apnic-latest https://ftp.apnic.net/stats/apnic/delegated-apnic-latest
-	curl -o china_ip_list.txt https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
-	python3 produce.py
-	mv routes4.conf /etc/bird/routes4.conf
-	# sudo mv routes6.conf /etc/bird/routes6.conf
-	birdc c
-	# sudo birdc6 configure
-EOF
-
 echo "请输入内网DNS服务器地址(无内网dns请输入网关地址)"
 
 read dnsip
