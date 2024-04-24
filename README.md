@@ -41,6 +41,8 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
 ```
+```
+```
 # RouterOS设置部分
 ### OSPF设置
 ```
