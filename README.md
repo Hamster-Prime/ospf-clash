@@ -14,6 +14,8 @@
 
 > [dndx/nchnroutes](https://github.com/dndx/nchnroutes)
 
+*** 
+
 # 1. LXC容器部分
 ### 模板下载
 **https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
@@ -42,6 +44,8 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
 ```
+
+***
 
 # 2. RouterOS设置部分
 ### OSPF设置
