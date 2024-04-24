@@ -1,5 +1,4 @@
 # 这是一个基于OSPF路由协议的RouterOS分流方案
-***
 
 # 特别感谢
 > [孔昊天的折腾日记](https://www.youtube.com/@user-ek1qg7ti5r)
@@ -45,8 +44,6 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
 ```
-
-***
 
 # 2. RouterOS设置部分
 ### OSPF设置
