@@ -232,27 +232,9 @@ echo "table inet clash {
 		}
 	}
 
-	set local_ipv6 {
-		type ipv6_addr
-		flags interval
-		elements = {
-			::ffff:0.0.0.0/96,
-			64:ff9b::/96,
-			100::/64,
-			2001::/32,
-			2001:10::/28,
-			2001:20::/28,
-			2001:db8::/32,
-			2002::/16,
-			fc00::/7,
-			fe80::/10
-		}
-	}
-
 	chain clash-tproxy {
 		fib daddr type { unspec, local, anycast, multicast } return
 		ip daddr @local_ipv4 return
-		ip6 daddr @local_ipv6 return
 		udp dport { 123 } return
 		meta l4proto { tcp, udp } meta mark set 1 tproxy to :7896 accept
 	}
@@ -260,7 +242,6 @@ echo "table inet clash {
 #	chain clash-mark {
 #		fib daddr type { unspec, local, anycast, multicast } return
 #		ip daddr @local_ipv4 return
-#		ip6 daddr @local_ipv6 return
 #		udp dport { 123 } return
 #		meta mark set 1
 #	}
