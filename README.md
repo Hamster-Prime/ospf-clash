@@ -35,7 +35,7 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ### 5. 安装Clash与OSPF服务
 根据脚本提示完成设置
 ```
-wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
+wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/rocinstall.sh && chmod +x rocinstall.sh && ./rocinstall.sh
 ```
 
 # RouterOS设置部分
