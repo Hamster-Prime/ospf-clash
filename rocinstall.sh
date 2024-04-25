@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# 提示用户选择操作
-PS3="请选择要执行的操作： "
+while true; do
+    # 提示用户选择操作
+    PS3="请选择要执行的操作： "
 options=("安装Clash_TUN" "安装Clash_TProxy" "安装Bird并配置OSPF" "退出")
 select opt in "${options[@]}"; do
     case "$REPLY" in
@@ -21,5 +22,6 @@ select opt in "${options[@]}"; do
         *)  # 对于无效选项，显示提示信息
             echo "无效选项，请重新选择"
             ;;
-    esac
+        esac
+    done
 done
