@@ -71,7 +71,7 @@ echo "bird 配置文件创建完成"
 
 git clone https://github.com/Hamster-Prime/nchnroutes.git
 
-sed -i 's/eth0/$selected_interface/g' produce.py
+sed -i 's/eth0/$selected_interface/g' /root/nchnroutes/produce.py
 
 make -C /root/nchnroutes
 
