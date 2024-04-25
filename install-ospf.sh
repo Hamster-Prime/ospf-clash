@@ -71,7 +71,7 @@ echo "bird 配置文件创建完成"
 
 git clone https://github.com/Hamster-Prime/nchnroutes.git
 
-mv /etc/bird/bird.conf /etc/bird/bird.conf.orig
+mv /root/nchnroutes/produce.py /root/nchnroutes/produce.py.orig
 
 tee /etc/bird/bird.conf <<EOF
 #!/usr/bin/env python3
