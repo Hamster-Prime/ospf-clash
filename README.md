@@ -4,10 +4,12 @@
 > [孔昊天的折腾日记](https://www.youtube.com/@user-ek1qg7ti5r)  
 > [allanchen2019](https://github.com/allanchen2019)  
 > [dndx](https://github.com/dndx)  
+> [Nathan](https://nathanyu.me/author/nathanyu/)
 ### 本项目相关知识引用自
 > [haotianlPM/rosrbgprouter](https://github.com/haotianlPM/rosrbgprouter)  
 > [allanchen2019/ospf-over-wireguard](https://github.com/allanchen2019/ospf-over-wireguard)  
 > [dndx/nchnroutes](https://github.com/dndx/nchnroutes)  
+> [使用Clash在Debian系统上用TProxy模式搭建透明代理](https://nathanyu.me/clash-transparent-proxy-on-debian/)
 ---
 # LXC容器部分
 ### 1. 模板下载
