@@ -276,6 +276,8 @@ echo "table inet clash {
 	}
 }" >> /etc/nftables.conf
 
+nft -f /etc/nftables.conf
+
 echo "开始下载并设置metacubexd面板"
 
 # 下载文件
