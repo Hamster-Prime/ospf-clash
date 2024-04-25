@@ -1,18 +1,22 @@
 #!/bin/bash
-
 while true; do
     # 提示用户选择操作
-    PS3="请选择要执行的操作： "
-options=("安装Clash_TUN" "安装Clash_TProxy" "安装Bird并配置OSPF" "退出")
-select opt in "${options[@]}"; do
-    case "$REPLY" in
-        1)  # 复制文件
+    echo "请选择要执行的操作："
+    echo "1. 安装Clash_TUN"
+    echo "2. 安装Clash_TProxy"
+    echo "3. 安装Bird并配置OSPF"
+    echo "4. 退出"
+    read -p "请输入操作编号： " option
+
+    # 根据用户输入执行相应操作
+    case "$option" in
+        1)  # 安装Clash_TUN
             wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-clash_tun.sh && chmod +x install-clash_tun.sh && ./install-clash_tun.sh
             ;;
-        2)  # 移动文件
+        2)  # 安装Clash_TProxy
             wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-clash_tproxy.sh && chmod +x install-clash_tproxy.sh && ./install-clash_tproxy.sh
             ;;
-        3)  # 删除文件
+        3)  # 安装Bird并配置OSPF
             wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-ospf.sh && chmod +x install-ospf.sh && ./install-ospf.sh
             ;;
         4)  # 退出
@@ -21,7 +25,7 @@ select opt in "${options[@]}"; do
             ;;
         *)  # 对于无效选项，显示提示信息
             echo "无效选项，请重新选择"
+            continue
             ;;
-        esac
-    done
+    esac
 done
