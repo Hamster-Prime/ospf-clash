@@ -40,7 +40,7 @@ OSPF + Clash TUN
 ```
 wget wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
 ```
-OSPF + Clash TProxy + MosDNS
+OSPF + Clash TProxy + MosDNS (可选)
 ```
 wget wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclashmosdns.sh && chmod +x installospfclashmosdns.sh && ./installospfclashmosdns.sh
 ```
