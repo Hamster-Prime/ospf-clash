@@ -64,7 +64,7 @@ wget "$file_url" || {
     exit 1
 }
 echo "开始解压"
-for file in mihomo*; do
+for file in mosdns*; do
     if [ -f "$file" ]; then
         echo "解压 $file ..."
         unzip "$file" "mosdns" -d /usr/local/bin
@@ -664,6 +664,7 @@ echo "table inet clash {
 
 #重启nftables
 nft -f /etc/nftables.conf
+systemctl enable nftables
 
 #创建clash-route服务
 touch /etc/systemd/system/clash-route.service
