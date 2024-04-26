@@ -13,8 +13,8 @@
 # LXC 容器配置部分
 ### 1. 模板下载
 **https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
-### 2. 容器创建  
-#### * 取消特权容器勾选
+### 2. 容器创建
+#### 取消特权容器勾选
 其他配置根据自己实际情况设定
 ### 3. 容器完善
 创建完成后容器，不要开机，进入对应容器的选项
@@ -34,7 +34,7 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
 启动容器并进入控制台
 ### 5. 安装 Clash 与 OSPF 服务
-#### * 选择你喜欢的方式并根据脚本提示完成设置
+#### 选择你喜欢的方式并根据脚本提示完成设置
 OSPF + Clash TUN
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
