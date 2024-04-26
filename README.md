@@ -10,7 +10,7 @@
 > [dndx/nchnroutes](https://github.com/dndx/nchnroutes)  
 > [使用Clash在Debian系统上用TProxy模式搭建透明代理](https://nathanyu.me/clash-transparent-proxy-on-debian/)
 ---
-# LXC容器部分
+# LXC容器配置部分
 ### 1. 模板下载
 **https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
 ### 2. 容器创建
@@ -43,7 +43,7 @@ OSPF + Clash TProxy + MosDNS
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install.sh && chmod +x install.sh && ./install.sh
 ```
-# RouterOS设置部分
+# RouterOS配置部分
 ### 1. 创建 Routing Table
 ```
 /routing table add name=Clash_VPN fib
