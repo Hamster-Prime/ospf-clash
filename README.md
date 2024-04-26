@@ -39,6 +39,10 @@ OSPF + Clash TUN
 ```
 wget wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
 ```
+OSPF + Clash TProxy + MosDNS
+```
+wget wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install.sh && chmod +x install.sh && ./install.sh
+```
 # RouterOS设置部分
 ### 1. 创建 Routing Table
 ```
