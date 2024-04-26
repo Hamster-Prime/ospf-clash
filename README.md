@@ -34,7 +34,7 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
 启动容器并进入控制台
 ### 5. 安装Clash与OSPF服务
-#### <选择喜欢的方式并根据脚本提示完成设置>
+#### * 选择喜欢的方式并根据脚本提示完成设置
 OSPF + Clash TUN
 ```
 wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
