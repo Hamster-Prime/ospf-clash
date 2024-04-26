@@ -24,7 +24,7 @@
 - smb
 - fuse
 ### 4. 容器配置文件
-进入PVE控制台，输入`nano /etc/pve/lxc/"容器ID".conf`，修改对应的配置文件，添加以下内容
+进入PVE控制台，输入 `nano /etc/pve/lxc/"容器ID".conf` 修改配置文件，添加以下内容
 ```
 lxc.apparmor.profile: unconfined
 lxc.cgroup.devices.allow: a
