@@ -35,11 +35,15 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ```
 启动容器并进入控制台
 ### 5. 安装Clash与OSPF服务
-根据脚本提示完成设置
+#### 根据脚本提示完成设置
+OSPF + Clash TUN
 ```
 wget wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclash.sh && chmod +x installospfclash.sh && ./installospfclash.sh
 ```
-
+OSPF + Clash TProxy + MosDNS
+```
+wget wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/installospfclashmosdns.sh && chmod +x installospfclashmosdns.sh && ./installospfclashmosdns.sh
+```
 # RouterOS设置部分
 ### 1. 创建 Routing Table
 ```
