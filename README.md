@@ -14,7 +14,7 @@
 ### 1. 模板下载
 **https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
 ### 2. 容器创建
-##### 取消特权容器勾选
+#### 取消特权容器勾选
 其他配置根据自己实际情况设定
 ### 3. 容器完善
 创建完成后容器，不要开机，进入对应容器的选项
