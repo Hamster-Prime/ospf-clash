@@ -571,7 +571,6 @@ sniffer:
     HTTP:
       ports: [80, 8080-8880]
       override-destination: true
-
 interface-name: eth0
 tun:
   device: utun
