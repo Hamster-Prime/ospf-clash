@@ -705,5 +705,7 @@ make -C /root/nchnroutes
 systemctl enable clash
 
 #完成安装
-echo "请执行 crontab -e 在末尾添加 0 5 * * * make -C /root/nchnroutes"
+echo "请执行 crontab -e 在末尾添加
+0 4 * * * truncate -s 0 /etc/mosdns/mosdns.log && /etc/mosdns/rules/update-cdn
+0 5 * * * make -C /root/nchnroutes "
 echo "请访问 http://$ip_address:9090/ui 进入管理面板后填入 http://$ip_address:9090"
