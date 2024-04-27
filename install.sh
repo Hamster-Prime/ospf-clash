@@ -11,10 +11,10 @@ while true; do
     # 根据用户输入执行相应操作
     case "$option" in
         1)  # 安装 OSPF + Clash_TUN
-            wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-clash_tun.sh && chmod +x install-clash_tun.sh && ./install-clash_tun.sh
+            wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-ospf-clash_tun.sh && chmod +x install-ospf-clash_tun.sh && ./install-ospf-clash_tun.sh
             ;;
         2)  # 安装 OSPF + Clash_TProxy
-            wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-clash_tproxy.sh && chmod +x install-clash_tproxy.sh && ./install-clash_tproxy.sh
+            wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-ospf-clash_tproxy.sh && chmod +x install-ospf-clash_tproxy.sh && ./install-ospf-clash_tproxy.sh
             ;;
         3)  # 仅安装OSPF
             wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install-ospf.sh && chmod +x install-ospf.sh && ./install-ospf.sh
