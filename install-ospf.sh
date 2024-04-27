@@ -1,39 +1,14 @@
 #!/bin/bash
 
+#升级并安装依赖
 apt update
 apt install bird git make curl wget sudo -y
 
-#检测网卡
-interfaces=$(ip -o link show | awk -F': ' '{print $2}')
-
-    # 输出物理网卡名称
-    for interface in $interfaces; do
-        # 检查是否为物理网卡（不包含虚拟、回环等），并排除@符号及其后面的内容
-        if [[ $interface =~ ^(en|eth).* ]]; then
-            interface_name=$(echo "$interface" | awk -F'@' '{print $1}')  # 去掉@符号及其后面的内容
-            echo "您的网卡是：$interface_name"
-            valid_interfaces+=("$interface_name")  # 存储有效的网卡名称
-        fi
-    done
-    # 提示用户选择
-    read -p "脚本自行检测的是否是您要的网卡？(y/n): " confirm_interface
-    if [ "$confirm_interface" = "y" ]; then
-        selected_interface="$interface_name"
-        echo "您选择的网卡是: $selected_interface"
-    elif [ "$confirm_interface" = "n" ]; then
-        read -p "请自行输入您的网卡名称: " selected_interface
-        echo "您输入的网卡名称是: $selected_interface"
-    else
-        echo "无效的选择"
-    fi
-
 # 检测eth0的IP
-ip_address=$(ip addr show $selected_interface | grep -oP 'inet \K[\d.]+')
+ip_address=$(ip addr show eth0 | grep -oP 'inet \K[\d.]+')
 
-echo "开始创建 bird 配置文件"
-
+#配置bird
 mv /etc/bird/bird.conf /etc/bird/bird.conf.orig
-
 tee /etc/bird/bird.conf <<EOF
 router id $ip_address;
 
@@ -61,18 +36,14 @@ protocol ospf {
     export all;
 
     area 0.0.0.0 {
-        interface "$selected_interface" {
+        interface "eth0" {
         };
     };
 }
 EOF
 
-echo "bird 配置文件创建完成"
-
+#拉取路由表
 git clone https://github.com/Hamster-Prime/nchnroutes.git
-
 make -C /root/nchnroutes
 
-echo "安装完成"
-
-echo "请执行 crontab -e 在末尾添加 0 5 * * * cd /root/nchnroutes && make"
+echo "请执行 crontab -e 在末尾添加 0 5 * * * make -C /root/nchnroutes"
