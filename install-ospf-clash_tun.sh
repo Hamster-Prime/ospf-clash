@@ -2,6 +2,9 @@
 apt update
 apt install bird git make curl wget gzip sudo -y
 
+#获取架构类型
+architecture=$(uname -m)
+
 # 检测eth0的IP
 ip_address=$(ip addr show eth0 | grep -oP 'inet \K[\d.]+')
 
@@ -14,7 +17,6 @@ echo "请输入机场订阅地址"
 read proxyurl
 
 #安装clash
-architecture=$(uname -m)
 if [ "$architecture" == "x86_64" ]; then
     file_url="https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/mihomo-linux-amd64-compatible-alpha.gz"
 elif [ "$architecture" == "aarch64" ]; then
@@ -201,5 +203,6 @@ make -C /root/nchnroutes
 systemctl enable clash
 
 #完成安装
+echo "安装完成"
 echo "请执行 crontab -e 在末尾添加 0 5 * * * cd make -C /root/nchnroutes"
 echo "请访问 http://$ip_address:9090/ui 进入管理面板后填入 http://$ip_address:9090"
