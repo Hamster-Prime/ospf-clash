@@ -4,7 +4,7 @@
 > [allanchen2019](https://github.com/allanchen2019)  
 > [dndx](https://github.com/dndx)  
 > [Nathan](https://nathanyu.me/author/nathanyu/)
-### 本项目相关知识引用自
+### 本文相关知识引用自
 > [haotianlPM/rosrbgprouter](https://github.com/haotianlPM/rosrbgprouter)  
 > [allanchen2019/ospf-over-wireguard](https://github.com/allanchen2019/ospf-over-wireguard)  
 > [dndx/nchnroutes](https://github.com/dndx/nchnroutes)  
