@@ -1,11 +1,15 @@
 #!/bin/bash
 while true; do
     # 提示用户选择操作
-    echo "请选择要执行的操作："
-    echo "1. 安装 OSPF + Clash_TUN"
-    echo "2. 安装 OSPF + Clash_TProxy"
-    echo "3. 仅安装 OSPF"
+    echo ""
+    echo "1. OSPF + Clash TUN"
+    echo ""
+    echo "2. OSPF + Clash TProxy"
+    echo ""
+    echo "3. 仅OSPF"
+    echo ""
     echo "4. 退出"
+    echo ""
     read -p "请输入操作编号： " option
 
     # 根据用户输入执行相应操作
