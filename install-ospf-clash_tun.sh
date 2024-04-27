@@ -8,13 +8,13 @@ architecture=$(uname -m)
 # 检测eth0的IP
 ip_address=$(ip addr show eth0 | grep -oP 'inet \K[\d.]+')
 
-#获取DNS地址
-echo "请输入内网DNS服务器地址(无内网dns请输入网关地址)"
-read dnsip
-
 #获取订阅链接地址
 echo "请输入机场订阅地址"
 read proxyurl
+
+#获取DNS地址
+echo "请输入内网DNS服务器地址(无内网dns请输入网关地址)"
+read dnsip
 
 #安装clash
 if [ "$architecture" == "x86_64" ]; then
