@@ -550,19 +550,10 @@ log-level: info
 allow-lan: true
 mixed-port: 7890
 tproxy-port: 7899
-unified-delay: false
+unified-delay: true
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
 external-ui: /etc/clash/ui/metacubexd
-geodata-mode: true
-geox-url:
-  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
-  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
-  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
-profile:
-  store-selected: true
-  store-fake-ip: true
-  tracing: true
 sniffer:
   enable: true
   sniff:
@@ -572,25 +563,6 @@ sniffer:
       ports: [80, 8080-8880]
       override-destination: true
 interface-name: eth0
-tun:
-  device: utun
-  enable: false
-  stack: system
-  auto-route: true
-  auto-detect-interface: false
-dns:
-  enable: true
-  listen: :1053
-  ipv6: false
-  enhanced-mode: redir-host
-  fake-ip-range: 28.0.0.1/8
-  fake-ip-filter:
-    - '*'
-    - '+.lan'
-    - '+.local'
-  default-nameserver:
-    - 127.0.0.1
-proxies:
 proxy-providers:
   机场:
    type: http
