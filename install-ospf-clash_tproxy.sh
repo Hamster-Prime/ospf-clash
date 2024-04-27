@@ -5,6 +5,10 @@ apt install bird unzip git nftables make curl wget gzip redis-server vim sudo -y
 # 检测eth0的IP
 ip_address=$(ip addr show eth0 | grep -oP 'inet \K[\d.]+')
 
+#获取机场订阅地址
+echo "请输入机场订阅地址"
+read proxyurl
+
 #安装clash
 architecture=$(uname -m)
 if [ "$architecture" == "x86_64" ]; then
@@ -19,16 +23,13 @@ wget "$file_url" || {
     echo "文件下载失败"
     exit 1
 }
-echo "开始解压"
 for file in mihomo*; do
     if [ -f "$file" ]; then
-        echo "解压 $file ..."
         gunzip "$file"
     fi
 done
 for file in mihomo*; do
     if [ -f "$file" ]; then
-        echo "重命名 $file 为 clash ..."
         mv "$file" clash
     fi
 done
@@ -51,13 +52,9 @@ WantedBy=multi-user.target
 EOF
 
 #配置bird服务
-echo "systemd 服务创建完成"
-echo "开始创建 bird 配置文件"
 mv /etc/bird/bird.conf /etc/bird/bird.conf.orig
-echo "请输入路由ID(无特殊要求请输入本机内网IP $ip_address )"
-read routerid
 tee /etc/bird/bird.conf <<EOF
-router id ${routerid};
+router id $ip_address;
 
 # The Kernel protocol is not a real routing protocol. Instead of communicating
 # with other routers in the network, it performs synchronization of BIRD's
@@ -88,11 +85,8 @@ protocol ospf {
     };
 }
 EOF
-echo "bird 配置文件创建完成"
 
 #写入clash配置文件
-echo "请输入机场订阅地址"
-read proxyurl
 tee /etc/clash/config.yaml <<EOF
 mode: rule
 ipv6: false
@@ -190,7 +184,6 @@ systemctl enable nftables
 
 #创建clash-route服务
 touch /etc/systemd/system/clash-route.service
-
 echo "[Unit]
 Description=Clash TProxy Rules
 After=network.target
@@ -227,5 +220,6 @@ make -C /root/nchnroutes
 systemctl enable clash
 
 #完成安装
+echo "安装完成"
 echo "请执行 crontab -e 并在末尾添加 0 5 * * * make -C /root/nchnroutes"
 echo "请访问 http://$ip_address:9090/ui 进入管理面板后填入 http://$ip_address:9090"
