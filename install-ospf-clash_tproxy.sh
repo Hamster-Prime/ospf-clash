@@ -2,6 +2,9 @@
 apt update
 apt install bird unzip git nftables make curl wget gzip redis-server vim sudo -y
 
+#获取架构类型
+architecture=$(uname -m)
+
 # 检测eth0的IP
 ip_address=$(ip addr show eth0 | grep -oP 'inet \K[\d.]+')
 
@@ -10,7 +13,6 @@ echo "请输入机场订阅地址"
 read proxyurl
 
 #安装clash
-architecture=$(uname -m)
 if [ "$architecture" == "x86_64" ]; then
     file_url="https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/mihomo-linux-amd64-compatible-alpha.gz"
 elif [ "$architecture" == "aarch64" ]; then
