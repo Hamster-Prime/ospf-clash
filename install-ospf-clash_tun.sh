@@ -1,6 +1,6 @@
 #!/bin/bash
 apt update
-apt install bird git make curl wget gzip sudo -y
+apt install bird unzip git nftables make curl wget gzip redis-server vim sudo -y
 
 #获取架构类型
 architecture=$(uname -m)
