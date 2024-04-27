@@ -46,4 +46,6 @@ EOF
 git clone https://github.com/Hamster-Prime/nchnroutes.git
 make -C /root/nchnroutes
 
+#完成安装
+echo "安装完成"
 echo "请执行 crontab -e 在末尾添加 0 5 * * * make -C /root/nchnroutes"
