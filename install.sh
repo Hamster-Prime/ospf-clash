@@ -4,7 +4,7 @@ while true; do
     echo "请选择要执行的操作："
     echo "1. 安装 OSPF + Clash_TUN"
     echo "2. 安装 OSPF + Clash_TProxy"
-    echo "3. 安装Bird并配置OSPF"
+    echo "3. 仅安装OSPF"
     echo "4. 退出"
     read -p "请输入操作编号： " option
 
