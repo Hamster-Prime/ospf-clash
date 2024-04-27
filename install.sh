@@ -1,6 +1,6 @@
 #!/bin/bash
 while true; do
-    # 提示用户选择操作
+    echo "请选择要执行的操作"
     echo ""
     echo "1. OSPF + Clash TUN"
     echo ""
