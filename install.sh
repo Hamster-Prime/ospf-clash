@@ -1,8 +1,8 @@
 #!/bin/bash
 while true; do
-    echo "------------------"
+    echo "--------------------"
     echo "请选择要执行的操作:"
-    echo "------------------"
+    echo "--------------------"
     echo "1. OSPF + Clash TUN"
     echo ""
     echo "2. OSPF + Clash TProxy"
