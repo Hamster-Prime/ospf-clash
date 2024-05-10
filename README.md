@@ -10,7 +10,7 @@
 > [dndx/nchnroutes](https://github.com/dndx/nchnroutes)  
 > [使用Clash在Debian系统上用TProxy模式搭建透明代理](https://nathanyu.me/clash-transparent-proxy-on-debian/)
 ---
-# LXC 容器配置部分
+# LXC 容器配置部分 ( N1可跳过这一步,推荐系统为Armbian-bullseye-5.x内核版本 )
 ### 1. 模板下载
 **https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
 ### 2. 容器创建
