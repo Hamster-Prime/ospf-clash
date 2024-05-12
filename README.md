@@ -56,7 +56,7 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install.sh 
 ```
 /ip firewall address-list add address="不想代理的主机IP地址" list=No_Proxy
 ```
-### 5. IPv6 ( 可选 )
+### 5. IPv6 设置 ( 可选 )
 ```
 /routing rule add action=lookup-only-in-table table=main routing-mark=Clash_VPN
 ```
