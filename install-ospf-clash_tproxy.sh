@@ -131,7 +131,6 @@ mode: rule
 ipv6: true
 log-level: silent
 allow-lan: true
-mixed-port: 7890
 tproxy-port: 7899
 unified-delay: true
 tcp-concurrent: true
