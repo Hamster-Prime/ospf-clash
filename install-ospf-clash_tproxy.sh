@@ -55,6 +55,9 @@ EOF
 
 #配置bird服务
 mv /etc/bird/bird.conf /etc/bird/bird.conf.orig
+mv /etc/bird/bird6.conf /etc/bird/bird6.conf.orig
+
+#IPv4
 tee /etc/bird/bird.conf <<EOF
 router id $ip_address;
 
@@ -88,27 +91,57 @@ protocol ospf {
 }
 EOF
 
+#IPv6
+tee /etc/bird/bird6.conf <<EOF
+router id $ip_address;
+
+# The Kernel protocol is not a real routing protocol. Instead of communicating
+# with other routers in the network, it performs synchronization of BIRD's
+# routing tables with the OS kernel.
+protocol kernel {
+	scan time 60;
+	import none;
+#	export all;   # Actually insert routes into the kernel routing table
+}
+
+# The Device protocol is not a real routing protocol. It doesn't generate any
+# routes and it only serves as a module for getting information about network
+# interfaces from the kernel. 
+protocol device {
+	scan time 60;
+}
+
+protocol static {
+    include "routes6.conf";
+}
+
+protocol ospf {
+    export all;
+
+    area 0.0.0.0 {
+        interface "eth0" {
+        };
+    };
+}
+EOF
+
 #写入clash配置文件
 tee /etc/clash/config.yaml <<EOF
 mode: rule
-ipv6: false
-log-level: info
+ipv6: true
+log-level: silent
 allow-lan: true
 mixed-port: 7890
 tproxy-port: 7899
 unified-delay: true
 tcp-concurrent: true
+find-process-mode: off
+global-client-fingerprint: chrome
 external-controller: 0.0.0.0:9090
 external-ui: /etc/clash/ui/metacubexd
-sniffer:
-  enable: true
-  sniff:
-    TLS:
-      ports: [443, 8443]
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
 interface-name: eth0
+profile:
+  store-selected: true
 proxy-providers:
   机场:
    type: http
@@ -167,11 +200,42 @@ echo "table inet clash {
 		}
 	}
 
+	set local_ipv6 {
+		type ipv6_addr
+		flags interval
+		elements = {
+			::ffff:0.0.0.0/96,
+			64:ff9b::/96,
+			100::/64,
+			2001::/32,
+			2001:10::/28,
+			2001:20::/28,
+			2001:db8::/32,
+			2002::/16,
+			fc00::/7,
+			fe80::/10
+		}
+	}
+
 	chain clash-tproxy {
 		fib daddr type { unspec, local, anycast, multicast } return
 		ip daddr @local_ipv4 return
+		ip6 daddr @local_ipv6 return
 		udp dport { 123 } return
 		meta l4proto { tcp, udp } meta mark set 1 tproxy to :7899 accept
+	}
+
+	chain clash-mark {
+		fib daddr type { unspec, local, anycast, multicast } return
+		ip daddr @local_ipv4 return
+		ip6 daddr @local_ipv6 return
+		udp dport { 123 } return
+		meta mark set 1
+	}
+
+	chain mangle-output {
+		type route hook output priority mangle; policy accept;
+		meta l4proto { tcp, udp } skgid != 997 ct direction original jump clash-mark
 	}
 
 	chain mangle-prerouting {
