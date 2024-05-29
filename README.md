@@ -45,7 +45,7 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install.sh 
 ```
 /routing ospf instance add name=Clash router-id="RouterOS的IPv4地址" routing-table=Clash_VPN
 /routing ospf area add instance=Clash name=OSPF-Area-Clash
-/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s cost=10 priority=1 interfaces="LAN网桥名字或者网卡名字" type=broadcast networks="内网网段,比如10.0.0.0/24"
+/routing ospf interface-template add area=OSPF-Area-Clash hello-interval=10s cost=10 priority=1 interfaces="LAN网桥名字或者网卡名字" type=broadcast
 ```
 ### 3. Firewall Mangle 设置
 ```
@@ -58,7 +58,7 @@ wget https://raw.githubusercontent.com/Hamster-Prime/ospf-clash/main/install.sh 
 ```
 ### 5. IPv6 设置 ( 可选 )
 ```
-/routing rule add action=lookup-only-in-table table=main routing-mark=Clash_VPN
+/routing rule add src-address=::/0 action=lookup-only-in-table table=main
 ```
 ```
 /routing ospf instance add name=Clash_IPv6 version=3 router-id="RouterOS的IPv4地址" routing-table=Clash_VPN
