@@ -14,7 +14,7 @@
 ### 1. 模板下载
 **https://github.com/Hamster-Prime/ospf-clash/releases/download/1.0.0/ubuntu-22.04.tar.zst**
 ### 2. 容器创建
-取消 **无特权容器** 勾选
+取消 **[无特权容器]** 勾选
 ### 3. 容器完善
 容器创建完成后，先不要开机，点击你创建的LXC容器-选项-功能，勾选以下选项
 - 嵌套
