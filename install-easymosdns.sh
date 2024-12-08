@@ -48,4 +48,4 @@ mosdns service restart
 
 #完成
 echo "安装完成"
-echo "请执行 crontab -e 并在末尾添加 0 5 * * * sudo truncate -s 0 /etc/mosdns/mosdns.log && /etc/mosdns/rules/update-cdn"
+echo "请执行 crontab -e 并在末尾添加 0 5 * * * truncate -s 0 /etc/mosdns/mosdns.log && /etc/mosdns/rules/update-cdn"
