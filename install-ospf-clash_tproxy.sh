@@ -269,7 +269,7 @@ WantedBy=multi-user.target" >> /etc/systemd/system/clash-route.service
 systemctl enable clash-route
 
 #安装metacubexd面板
-wget https://github.com/MetaCubeX/metacubexd/releases/download/v1.138.1/compressed-dist.tgz
+wget https://github.com/MetaCubeX/metacubexd/releases/download/v1.176.1/compressed-dist.tgz
 mkdir -p /etc/clash/ui/metacubexd
 tar -xzvf compressed-dist.tgz -C /etc/clash/ui/metacubexd
 rm compressed-dist.tgz
